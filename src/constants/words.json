@@ -1,0 +1,8 @@
+{
+    "screens": {
+        "login": {
+            "title": "Webbylab Movies",
+            "description": "Movies app created for webbylab based on a test task"
+        }
+    }
+}

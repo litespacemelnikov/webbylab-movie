@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import Container from "../../components/container/container";
 import words from "../../constants/words.json";
+import LoginForm from "./login.form";
 import styles from "./login.styles";
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
         <Text style={styles.description}>
           {words.screens.login.description}
         </Text>
+        <LoginForm />
       </View>
     </Container>
   );

@@ -2,7 +2,12 @@
     "screens": {
         "login": {
             "title": "Webbylab Movies",
-            "description": "Movies app created for webbylab based on a test task"
+            "description": "Movies app created for webbylab based on a test task",
+            "form": {
+                "email": "E-mail",
+                "password": "Password",
+                "loginButton": "Login"
+            }
         }
     }
 }

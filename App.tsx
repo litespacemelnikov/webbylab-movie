@@ -7,6 +7,7 @@ import {
   STATUSBAR_BACKGROUND,
   STATUSBAR_STYLE,
 } from "./src/constants/statusbar";
+import Alert from "./src/components/alert/alert";
 
 const App = () => (
   <Provider store={store}>
@@ -16,6 +17,7 @@ const App = () => (
         backgroundColor={STATUSBAR_BACKGROUND}
         translucent={false}
       />
+      <Alert />
       <Navigation />
     </SafeAreaView>
   </Provider>

@@ -19,6 +19,13 @@ export default StyleSheet.create({
     },
     description: {
         fontSize: 14,
-        opacity: 0.5
+        opacity: 0.5,
+        paddingLeft: 20,
+        paddingRight: 20,
+        textAlign: 'center'
+    },
+    form: {
+        width: '100%',
+        marginTop: 20
     }
 });

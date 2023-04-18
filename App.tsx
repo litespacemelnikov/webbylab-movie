@@ -9,18 +9,20 @@ import {
 } from "./src/constants/statusbar";
 import Alert from "./src/components/alert/alert";
 
-const App = () => (
-  <Provider store={store}>
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar
-        style={STATUSBAR_STYLE}
-        backgroundColor={STATUSBAR_BACKGROUND}
-        translucent={false}
-      />
-      <Alert />
-      <Navigation />
-    </SafeAreaView>
-  </Provider>
-);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar
+          style={STATUSBAR_STYLE}
+          backgroundColor={STATUSBAR_BACKGROUND}
+          translucent={false}
+        />
+        <Alert />
+        <Navigation />
+      </SafeAreaView>
+    </Provider>
+  );
+};
 
 export default App;

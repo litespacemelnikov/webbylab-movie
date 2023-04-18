@@ -7,7 +7,9 @@
                 "email": "E-mail",
                 "password": "Password",
                 "loginButton": "Login"
-            }
+            },
+            "or": "or",
+            "registerLink": "Create new account"
         }
     }
 }

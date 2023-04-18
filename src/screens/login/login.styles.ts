@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants/colors';
 
 export default StyleSheet.create({
     login: {
@@ -27,5 +28,15 @@ export default StyleSheet.create({
     form: {
         width: '100%',
         marginTop: 20
+    },
+    or: {
+        marginTop: 15,
+        marginBottom: 15,
+        opacity: 0.4
+    },
+    registerLink: {
+        color: COLORS.LIGHT_BLUE,
+        fontWeight: "500",
+        textAlign: 'center'
     }
 });

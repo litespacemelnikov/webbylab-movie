@@ -1,21 +1,25 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { View } from "react-native";
+import { View, Keyboard } from "react-native";
 import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { STORAGE_SESSION_TOKEN } from "../../constants/storage";
+import { setSessionToken, selectUserLoader, setLoader } from "../../store/user";
 import { loginSchema } from "../../schemas/loginSchema";
 import Input from "../../components/input/input";
 import words from "../../constants/words.json";
 import styles from "./login.styles";
 import Button from "../../components/button/button";
 import { login } from "../../api/api";
-import { STORAGE_SESSION_TOKEN } from "../../constants/storage";
-import { useDispatch } from "react-redux";
-import { setSessionToken } from "../../store/user";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const loader = useSelector(selectUserLoader);
 
   const onSubmit = async () => {
     try {
+      Keyboard.dismiss();
+      dispatch(setLoader(true));
+
       const loginResponse = await login(values);
 
       AsyncStorage.setItem(
@@ -26,6 +30,8 @@ const LoginForm = () => {
       dispatch(setSessionToken(loginResponse.data.token));
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(setLoader(false));
     }
   };
 
@@ -53,6 +59,7 @@ const LoginForm = () => {
         secureTextEntry={true}
       />
       <Button
+        loader={loader}
         onPress={handleSubmit}
         label={words.screens.login.form.loginButton}
       />

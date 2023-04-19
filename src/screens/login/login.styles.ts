@@ -30,13 +30,14 @@ export default StyleSheet.create({
         marginTop: 20
     },
     or: {
-        marginTop: 15,
-        marginBottom: 15,
+        marginTop: 20,
         opacity: 0.4
     },
     registerLink: {
         color: COLORS.LIGHT_BLUE,
         fontWeight: "500",
-        textAlign: 'center'
+        textAlign: 'center',
+        paddingTop: 20,
+        paddingBottom: 20
     }
 });

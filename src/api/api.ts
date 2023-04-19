@@ -1,5 +1,9 @@
 import axios from "axios";
-import { ENDPOINT_BASE_URL, ENDPOINT_SESSION } from "../constants/endpoints";
+import {
+  ENDPOINT_BASE_URL,
+  ENDPOINT_SESSION,
+  ENDPOINT_USERS,
+} from "../constants/endpoints";
 import { showAlert } from "../store/alert";
 import { store } from "../store/store";
 
@@ -33,3 +37,21 @@ export const login = async ({
   email: string;
   password: string;
 }) => await axiosIntance.post(ENDPOINT_SESSION, { email, password });
+
+export const register = async ({
+  name,
+  email,
+  password,
+  confirmPassword,
+}: {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}) =>
+  await axiosIntance.post(ENDPOINT_USERS, {
+    name,
+    email,
+    password,
+    confirmPassword,
+  });

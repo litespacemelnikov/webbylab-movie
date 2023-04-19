@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useDispatch, useSelector } from "react-redux";
@@ -5,11 +6,13 @@ import { selectUserLoader, setLoader, setSessionToken } from "../store/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_SESSION_TOKEN } from "../constants/storage";
 import { StackParamList } from "./types";
-import login from "../screens/login/login";
 import { selectSessionToken } from "../store/user";
-import Test from "../screens/test";
 import GlobalLoader from "../components/globalLoader/globalLoader";
-import { useEffect } from "react";
+import HeaderRight from "./headerRight";
+
+import login from "../screens/login/login";
+import Register from "../screens/register/register";
+import Movies from "../screens/movies/movies";
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
@@ -20,7 +23,7 @@ const Navigation = () => {
   const loader = useSelector(selectUserLoader);
 
   useEffect(() => {
-    // checkAndSetSessionToken();
+    checkAndSetSessionToken();
   }, []);
 
   const checkAndSetSessionToken = async () => {
@@ -41,13 +44,25 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         {sessionToken ? (
-          <Stack.Group screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="Test" component={Test} />
+          <Stack.Group
+            screenOptions={{
+              headerRight: () => <HeaderRight />,
+            }}
+          >
+            <Stack.Screen
+              name="Movies"
+              component={Movies}
+              options={{ headerTitle: "Webbylab Movies" }}
+            />
           </Stack.Group>
         ) : (
           <Stack.Group>
-            <Stack.Screen name="Login" component={login} options={{headerShown: false}} />
-            <Stack.Screen name="Register" component={Test} />
+            <Stack.Screen
+              name="Login"
+              component={login}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Register" component={Register} />
           </Stack.Group>
         )}
       </Stack.Navigator>

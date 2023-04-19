@@ -3,13 +3,28 @@
         "login": {
             "title": "Webbylab Movies",
             "description": "Movies app created for webbylab based on a test task",
-            "form": {
-                "email": "E-mail",
-                "password": "Password",
-                "loginButton": "Login"
-            },
             "or": "or",
             "registerLink": "Create new account"
+        },
+        "register": {
+            
         }
-    }
+    },
+    "forms": {
+        "email": "E-mail",
+        "password": "Password",
+        "name": "Your name",
+        "repeatPassword": "Repeat password",
+        "loginButton": "Login",
+        "createAccountButton": "Create account"
+    },
+    "logout": {
+        "alert": {
+            "title": "Logout",
+            "ask": "Are you sure you want to exit ?"
+        }
+    },
+    "no": "No",
+    "yes": "Yes",
+    "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 }

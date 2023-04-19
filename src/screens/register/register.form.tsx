@@ -4,14 +4,14 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { STORAGE_SESSION_TOKEN } from "../../constants/storage";
 import { setSessionToken, selectUserLoader, setLoader } from "../../store/user";
-import { loginSchema } from "../../schemas/loginSchema";
+import { registerSchema } from "../../schemas/registerSchema";
 import Input from "../../components/input/input";
 import words from "../../constants/words.json";
-import styles from "./login.styles";
+import styles from "./register.styles";
 import Button from "../../components/button/button";
-import { login } from "../../api/api";
+import { register } from "../../api/api";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
   const loader = useSelector(selectUserLoader);
 
@@ -20,7 +20,7 @@ const LoginForm = () => {
       Keyboard.dismiss();
       dispatch(setLoader(true));
 
-      const loginResponse = await login(values);
+      const loginResponse = await register(values);
 
       AsyncStorage.setItem(
         STORAGE_SESSION_TOKEN,
@@ -36,13 +36,20 @@ const LoginForm = () => {
   };
 
   const { handleSubmit, handleChange, handleBlur, errors, values } = useFormik({
-    initialValues: { email: "", password: "" },
-    validationSchema: loginSchema,
+    initialValues: { name: "", email: "", password: "", confirmPassword: "" },
+    validationSchema: registerSchema,
     onSubmit,
   });
 
   return (
     <View style={styles.form}>
+      <Input
+        style={{ marginBottom: 20 }}
+        error={errors.name}
+        onChangeText={handleChange("name")}
+        onBlur={handleBlur("name")}
+        placeholder={words.forms.name}
+      />
       <Input
         style={{ marginBottom: 20 }}
         error={errors.email}
@@ -58,13 +65,21 @@ const LoginForm = () => {
         placeholder={words.forms.password}
         secureTextEntry={true}
       />
+      <Input
+        style={{ marginBottom: 20 }}
+        error={errors.confirmPassword}
+        onChangeText={handleChange("confirmPassword")}
+        onBlur={handleBlur("confirmPassword")}
+        placeholder={words.forms.repeatPassword}
+        secureTextEntry={true}
+      />
       <Button
         loader={loader}
         onPress={handleSubmit}
-        label={words.forms.loginButton}
+        label={words.forms.createAccountButton}
       />
     </View>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

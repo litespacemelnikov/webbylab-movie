@@ -5,4 +5,4 @@ export const loginSchema = object({
     password: string().required()
 });
 
-export type User = InferType<typeof loginSchema>;
+export type Login = InferType<typeof loginSchema>;

@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from '../../constants/colors';
 
 export default StyleSheet.create({
-    container: {
-        paddingLeft: 20,
-        paddingRight: 20
-    }
+    movies: {
+        
+    },
 });

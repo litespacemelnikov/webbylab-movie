@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   ENDPOINT_BASE_URL,
   ENDPOINT_MOVIES,
+  ENDPOINT_MOVIES_IMPORT,
   ENDPOINT_SESSION,
   ENDPOINT_USERS,
 } from "../constants/endpoints";
@@ -84,6 +85,9 @@ export const getMovies = async ({
 }) =>
   await axiosIntance.get(
     `${ENDPOINT_MOVIES}?order=DESC&limit=${limit}&offset=${offset}${
-      search === "" ? '' : `&search=${search}`
+      search === "" ? "" : `&search=${search}`
     }`
   );
+
+export const importMovies = async (file) =>
+  await axiosIntance.post(ENDPOINT_MOVIES_IMPORT, file);

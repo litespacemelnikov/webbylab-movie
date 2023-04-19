@@ -9,6 +9,7 @@ import { StackParamList } from "./types";
 import { selectSessionToken } from "../store/user";
 import GlobalLoader from "../components/globalLoader/globalLoader";
 import HeaderRight from "./headerRight";
+import HeaderLeft from "./headerLeft";
 
 import login from "../screens/login/login";
 import Register from "../screens/register/register";
@@ -46,13 +47,13 @@ const Navigation = () => {
         {sessionToken ? (
           <Stack.Group
             screenOptions={{
-              headerRight: () => <HeaderRight />,
+              headerRight: () => <HeaderRight />
             }}
           >
             <Stack.Screen
               name="Movies"
               component={Movies}
-              options={{ headerTitle: "Webbylab Movies" }}
+              options={{ headerLeft: () => <HeaderLeft />, headerTitle: '' }}
             />
           </Stack.Group>
         ) : (

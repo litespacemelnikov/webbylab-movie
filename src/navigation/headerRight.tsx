@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { STORAGE_SESSION_TOKEN } from "../constants/storage";
 import { setSessionToken } from "../store/user";
 import words from "../constants/words.json";
+import styles from "./header.styles";
 
 const HeaderRight = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const HeaderRight = () => {
   return (
     <TouchableOpacity onPress={onPress}>
       <Image
-        style={{ width: 25, height: 25 }}
+        style={styles.logoutIcon}
         resizeMode="contain"
         source={require("../../assets/icons/power.png")}
       />

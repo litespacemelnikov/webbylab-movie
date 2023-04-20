@@ -18,7 +18,6 @@ const LoginForm = () => {
   const onSubmit = async () => {
     try {
       Keyboard.dismiss();
-      dispatch(setLoader(true));
 
       const loginResponse = await login(values);
 
@@ -30,8 +29,6 @@ const LoginForm = () => {
       dispatch(setSessionToken(loginResponse.data.token));
     } catch (error) {
       console.log(error);
-    } finally {
-      dispatch(setLoader(false));
     }
   };
 

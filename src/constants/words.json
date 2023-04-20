@@ -35,6 +35,8 @@
     "edit": "Edit",
     "addActors": "+ Add actor",
     "noData": "No data",
+    "createMovie": "+ Create movie",
+    "import": "import",
     "search": "Search movie by name or actor ...",
     "loremIpsum": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
 }

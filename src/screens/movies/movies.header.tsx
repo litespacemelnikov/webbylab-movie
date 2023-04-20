@@ -65,13 +65,13 @@ const MoviesHeader = () => {
         onPress={gotoCreateMovie}
         style={[styles.smallLink, { backgroundColor: COLORS.LIGHT_BLUE }]}
       >
-        <Text style={{ color: COLORS.WHITE }}>+ Create movie</Text>
+        <Text style={{ color: COLORS.WHITE }}>{words.createMovie}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={onPressImport}
         style={[styles.smallLink, { backgroundColor: COLORS.SILVER }]}
       >
-        <Text style={{ opacity: 0.5 }}>Import</Text>
+        <Text style={{ opacity: 0.5 }}>{words.import}</Text>
       </TouchableOpacity>
     </View>
   );

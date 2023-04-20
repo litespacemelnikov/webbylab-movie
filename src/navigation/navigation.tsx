@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUserLoader, setLoader, setSessionToken } from "../store/user";
+import { selectUserGlobalLoader, setGlobalLoader, setSessionToken } from "../store/user";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_SESSION_TOKEN } from "../constants/storage";
 import { StackParamList } from "./types";
@@ -22,7 +22,7 @@ const Navigation = () => {
   const sessionToken = useSelector(selectSessionToken);
 
   const dispatch = useDispatch();
-  const loader = useSelector(selectUserLoader);
+  const loader = useSelector(selectUserGlobalLoader);
 
   useEffect(() => {
     checkAndSetSessionToken();
@@ -30,13 +30,13 @@ const Navigation = () => {
 
   const checkAndSetSessionToken = async () => {
     try {
-      dispatch(setLoader(true));
+      dispatch(setGlobalLoader(true));
       const getToken = await AsyncStorage.getItem(STORAGE_SESSION_TOKEN);
       dispatch(setSessionToken(getToken));
     } catch (error) {
       console.log(error);
     } finally {
-      dispatch(setLoader(false));
+      dispatch(setGlobalLoader(false));
     }
   };
 

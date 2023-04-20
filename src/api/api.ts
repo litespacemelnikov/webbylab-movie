@@ -24,8 +24,6 @@ export const axiosIntance = axios.create({
 // Response interceptor.
 axiosIntance.interceptors.response.use(
   (response) => {
-    console.log(response);
-
     if (response.data.status === 0 && response.data.error.code) {
       store.dispatch(showAlert(response.data.error.code));
       throw new Error();
@@ -75,7 +73,7 @@ export const register = async ({
   });
 
 export const getMovies = async ({
-  limit = 100,
+  limit = 100, // TODO: Create pagination for FlatList (onEndReached)
   offset = 0,
   search = "",
 }: {

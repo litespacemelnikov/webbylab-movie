@@ -1,4 +1,10 @@
-import { TouchableOpacity, Text, ActivityIndicator } from "react-native";
+import {
+  TouchableOpacity,
+  Text,
+  ActivityIndicator,
+  TextStyle,
+  StyleProp,
+} from "react-native";
 import styles from "./button.styles";
 
 interface IButtonProps {
@@ -6,6 +12,7 @@ interface IButtonProps {
   onPress: () => void;
   disabled?: boolean;
   loader?: boolean;
+  style?: StyleProp<TextStyle>;
 }
 
 const Button = ({
@@ -13,10 +20,11 @@ const Button = ({
   onPress,
   disabled = false,
   loader = false,
+  style = {},
 }: IButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
-    style={[styles.button, (disabled || loader) && { opacity: 0.7 }]}
+    style={[styles.button, (disabled || loader) && { opacity: 0.7 }, style]}
     activeOpacity={0.8}
     disabled={disabled || loader}
   >

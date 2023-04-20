@@ -6,10 +6,20 @@ import words from "../../constants/words.json";
 import styles from "./movies.styles";
 import { getMovies, importMovies } from "../../api/api";
 import { useDispatch, useSelector } from "react-redux";
-import { selectMovies, setLoader, setMovies } from "../../store/movies";
+import {
+  initActiveMovie,
+  selectMovies,
+  setActiveMovie,
+  setLoader,
+  setMovies,
+} from "../../store/movies";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackParamList } from "../../navigation/types";
 
 const MoviesHeader = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParamList>>();
   const { search } = useSelector(selectMovies);
 
   const onPressImport = async () => {
@@ -44,9 +54,15 @@ const MoviesHeader = () => {
     }
   };
 
+  const gotoCreateMovie = () => {
+    dispatch(setActiveMovie(initActiveMovie));
+    navigation.navigate("Movie", { isCreate: true });
+  };
+
   return (
     <View style={styles.moviesHeader}>
       <TouchableOpacity
+        onPress={gotoCreateMovie}
         style={[styles.smallLink, { backgroundColor: COLORS.LIGHT_BLUE }]}
       >
         <Text style={{ color: COLORS.WHITE }}>+ Create movie</Text>

@@ -14,6 +14,7 @@ import HeaderLeft from "./headerLeft";
 import login from "../screens/login/login";
 import Register from "../screens/register/register";
 import Movies from "../screens/movies/movies";
+import Movie from "../screens/movie/movie";
 
 const Stack = createNativeStackNavigator<StackParamList>();
 
@@ -47,13 +48,18 @@ const Navigation = () => {
         {sessionToken ? (
           <Stack.Group
             screenOptions={{
-              headerRight: () => <HeaderRight />
+              headerRight: () => <HeaderRight />,
             }}
           >
             <Stack.Screen
               name="Movies"
               component={Movies}
-              options={{ headerLeft: () => <HeaderLeft />, headerTitle: '' }}
+              options={{ headerLeft: () => <HeaderLeft />, headerTitle: "" }}
+            />
+            <Stack.Screen
+              name="Movie"
+              component={Movie}
+              options={{ headerRight: () => null }}
             />
           </Stack.Group>
         ) : (

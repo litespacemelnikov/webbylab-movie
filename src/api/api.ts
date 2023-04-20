@@ -75,7 +75,7 @@ export const register = async ({
   });
 
 export const getMovies = async ({
-  limit = 10,
+  limit = 100,
   offset = 0,
   search = "",
 }: {
@@ -89,5 +89,50 @@ export const getMovies = async ({
     }`
   );
 
+export const getMovieById = async (id: string) =>
+  await axiosIntance.get(`${ENDPOINT_MOVIES}/${id}`);
+
 export const importMovies = async (file) =>
   await axiosIntance.post(ENDPOINT_MOVIES_IMPORT, file);
+
+export const updateMovie = async (
+  id: string,
+  {
+    title,
+    year,
+    format,
+    actors,
+  }: {
+    title: string;
+    format: string;
+    year: string;
+    actors: Array<string>;
+  }
+) =>
+  await axiosIntance.patch(`${ENDPOINT_MOVIES}/${id}`, {
+    title,
+    year,
+    format,
+    actors,
+  });
+
+export const deleteMovie = async (id: string) =>
+  await axiosIntance.delete(`${ENDPOINT_MOVIES}/${id}`);
+
+export const createMovie = async ({
+  title,
+  year,
+  format,
+  actors,
+}: {
+  title: string;
+  format: string;
+  year: string;
+  actors: Array<string>;
+}) =>
+  await axiosIntance.post(ENDPOINT_MOVIES, {
+    title,
+    year,
+    format,
+    actors,
+  });

@@ -21,7 +21,7 @@ const Movies = () => {
 
   const fetchMovies = async () => {
     try {
-      const moviesResult = await getMovies({search});
+      const moviesResult = await getMovies({ search });
       dispatch(setMovies(moviesResult.data.data));
     } catch (error) {
       console.log(error);
@@ -39,7 +39,12 @@ const Movies = () => {
       refreshing={movies.length !== 0 && loader}
       onRefresh={fetchMovies}
       renderItem={({ item }: { item: IMovieItemProps }) => (
-        <MovieItem title={item.title} format={item.format} year={item.year} />
+        <MovieItem
+          id={item.id}
+          title={item.title}
+          format={item.format}
+          year={item.year}
+        />
       )}
       keyExtractor={(item) => item.id}
       data={movies}

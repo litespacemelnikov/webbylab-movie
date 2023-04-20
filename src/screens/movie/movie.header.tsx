@@ -1,7 +1,6 @@
 import { memo } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { COLORS } from "../../constants/colors";
-import words from "../../constants/words.json";
 import styles from "./movie.styles";
 
 interface IPropsMovieHeader {

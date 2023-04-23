@@ -26,6 +26,7 @@ import words from "../../constants/words.json";
 import styles from "./movie.styles";
 import { COLORS } from "../../constants/colors";
 import { movieSchema } from "../../schemas/movieSchema";
+import { showAlert } from "../../store/alert";
 
 const Movie = () => {
   const { params } = useRoute<RouteProp<StackParamList, "Movie">>();
@@ -34,7 +35,7 @@ const Movie = () => {
   const { activeMovie, movies, loader } = useSelector(selectMovies);
   const [actors, setActors] = useState<Array<string>>([]);
 
-  const isCreateOrEdit = params.isCreate || params.isEdit;
+  const isCreateOrEdit = params.isCreate || params.isEdit || false;
 
   useEffect(() => {
     if (!isCreateOrEdit) getMovie();
@@ -79,6 +80,14 @@ const Movie = () => {
   const onSubmit = async () => {
     try {
       dispatch(setLoader(true));
+
+      if (actors.length === 0) {
+        return dispatch(showAlert(words.errors.addOneActor));
+      }
+
+      if(actors.findIndex(item => item.trim() === "") !== -1) {
+        return dispatch(showAlert(words.errors.enterActorName));
+      }
 
       if (params.isCreate) {
         const movieResult = await createMovie({ ...values, actors });

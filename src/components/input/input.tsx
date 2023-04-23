@@ -12,14 +12,16 @@ import styles from "./input.styles";
 interface IInputProps {
   error?: string | null;
   inputStyles?: StyleProp<TextStyle>;
+  editable?: boolean;
 }
 
 const Input = ({
   error = null,
   inputStyles = {},
+  editable = true,
   ...props
 }: TextInputProps & IInputProps) => (
-  <View style={props.style}>
+  <View style={props.style} pointerEvents={editable ? "auto" : "none"}>
     <TextInput
       {...props}
       style={[styles.input, error && styles.errorBorder, inputStyles]}

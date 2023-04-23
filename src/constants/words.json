@@ -29,6 +29,15 @@
             "ask": "Are you sure you want to exit ?"
         }
     },
+    "errors": {
+        "wentWrong": "Something went wrong (",
+        "wrongEmailOrPassword": "Wrong email or password",
+        "existsMovie": "Movie with that title already exists.",
+        "incorrectFields": "One of the fields is not filled correctly",
+        "notUniqEmail": "Email is not unique or already exists",
+        "addOneActor": "Please add at least one actor",
+        "enterActorName": "Please enter actor name"
+    },
     "no": "No",
     "yes": "Yes",
     "create": "Create",

@@ -7,6 +7,7 @@ import {
   ENDPOINT_SESSION,
   ENDPOINT_USERS,
 } from "../constants/endpoints";
+import { errors } from "../constants/errors";
 import { STORAGE_SESSION_TOKEN } from "../constants/storage";
 import { showAlert } from "../store/alert";
 import { store } from "../store/store";
@@ -25,7 +26,7 @@ export const axiosIntance = axios.create({
 axiosIntance.interceptors.response.use(
   (response) => {
     if (response.data.status === 0 && response.data.error.code) {
-      store.dispatch(showAlert(response.data.error.code));
+      store.dispatch(showAlert(errors[response.data.error.code] || errors.WENTWRONG));
       throw new Error();
     }
 
